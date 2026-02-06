@@ -135,5 +135,7 @@ namespace Microsoft.Build.Framework
         /// <param name="warnings"></param>
         /// <returns></returns>
         public abstract SdkResult IndicateFailure(IEnumerable<string> errors, IEnumerable<string> warnings = null);
+
+        public abstract SdkResult IndicateResolutionIsExpensive(SdkReference sdkReference, string version);
     }
 }

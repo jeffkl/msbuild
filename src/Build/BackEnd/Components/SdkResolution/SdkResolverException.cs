@@ -19,11 +19,21 @@ namespace Microsoft.Build.BackEnd.SdkResolution
 
         public SdkReference Sdk { get; private set; }
 
+        public bool ResolutionIsExpensive { get; private set; }
+
         public SdkResolverException(string resourceName, SdkResolver resolver, SdkReference sdk, Exception innerException, params string[] args)
+            : this(resourceName, resolver, sdk, resolutionIsExpensive: false, innerException, args)
+        {
+            Resolver = resolver;
+            Sdk = sdk;
+        }
+
+        public SdkResolverException(string resourceName, SdkResolver resolver, SdkReference sdk, bool resolutionIsExpensive, Exception innerException, params string[] args)
             : base(string.Format(ResourceUtilities.GetResourceString(resourceName), args), innerException)
         {
             Resolver = resolver;
             Sdk = sdk;
+            ResolutionIsExpensive = resolutionIsExpensive;
         }
 
         // Do not remove - used by BuildExceptionSerializationHelper

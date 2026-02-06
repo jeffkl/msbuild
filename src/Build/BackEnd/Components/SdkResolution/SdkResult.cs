@@ -22,7 +22,10 @@ namespace Microsoft.Build.BackEnd.SdkResolution
             Translate(translator);
         }
 
-        public SdkResult(SdkReference sdkReference, IEnumerable<string> errors, IEnumerable<string> warnings)
+        public SdkResult(
+            SdkReference sdkReference,
+            IEnumerable<string> errors,
+            IEnumerable<string> warnings)
         {
             Success = false;
             SdkReference = sdkReference;
@@ -30,8 +33,13 @@ namespace Microsoft.Build.BackEnd.SdkResolution
             Warnings = warnings;
         }
 
-        public SdkResult(SdkReference sdkReference, string path, string version, IEnumerable<string> warnings,
-            IDictionary<string, string> propertiesToAdd = null, IDictionary<string, SdkResultItem> itemsToAdd = null, IDictionary<string, string> environmentVariablesToAdd = null)
+        public SdkResult(SdkReference sdkReference,
+            string path, string version,
+            IEnumerable<string> warnings,
+            IDictionary<string, string> propertiesToAdd = null,
+            IDictionary<string, SdkResultItem> itemsToAdd = null,
+            IDictionary<string, string> environmentVariablesToAdd = null,
+            bool resolutionIsExpensive = false)
         {
             Success = true;
             SdkReference = sdkReference;
@@ -41,14 +49,22 @@ namespace Microsoft.Build.BackEnd.SdkResolution
             PropertiesToAdd = propertiesToAdd;
             ItemsToAdd = itemsToAdd;
             EnvironmentVariablesToAdd = environmentVariablesToAdd;
+            ResolutionIsExpensive = resolutionIsExpensive;
         }
 
         public SdkResult()
         {
         }
 
-        public SdkResult(SdkReference sdkReference, IEnumerable<string> paths, string version, IDictionary<string, string> propertiesToAdd,
-                         IDictionary<string, SdkResultItem> itemsToAdd, IEnumerable<string> warnings, IDictionary<string, string> environmentVariablesToAdd = null)
+        public SdkResult(
+            SdkReference sdkReference,
+            IEnumerable<string> paths,
+            string version,
+            IDictionary<string, string> propertiesToAdd,
+            IDictionary<string, SdkResultItem> itemsToAdd,
+            IEnumerable<string> warnings,
+            IDictionary<string, string> environmentVariablesToAdd = null,
+            bool resolutionIsExpensive = false)
         {
             Success = true;
             SdkReference = sdkReference;
@@ -73,6 +89,8 @@ namespace Microsoft.Build.BackEnd.SdkResolution
             EnvironmentVariablesToAdd = environmentVariablesToAdd;
 
             Warnings = warnings;
+
+            ResolutionIsExpensive = resolutionIsExpensive;
         }
 
         public Construction.ElementLocation ElementLocation { get; set; }

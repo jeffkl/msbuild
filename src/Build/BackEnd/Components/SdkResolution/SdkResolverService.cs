@@ -181,7 +181,7 @@ namespace Microsoft.Build.BackEnd.SdkResolution
             List<SdkResolverManifest> matchingResolversManifests = new();
             foreach (SdkResolverManifest manifest in _specificResolversManifestsRegistry)
             {
-                WaitIfTestRequires(); 
+                WaitIfTestRequires();
                 try
                 {
                     if (manifest.ResolvableSdkRegex.IsMatch(sdk.Name))
@@ -331,6 +331,13 @@ namespace Microsoft.Build.BackEnd.SdkResolution
                 {
                     MSBuildEventSource.Log.SdkResolverResolveSdkStart();
                     result = (SdkResult)sdkResolver.Resolve(sdk, context, resultFactory);
+
+                    if (result.ResolutionIsExpensive)
+                    {
+                        SdkReference expensiveSdk = new SdkReference(sdk.Name, result.Version, minimumVersion: null);
+
+                        throw new SdkResolverException("RESOURCE_NAME", sdkResolver, expensiveSdk)$"Resolver {sdkResolver.Name} returned an expensive result for SDK {sdk.Name}. Resolvers should not return expensive results.");
+                    }
 
                     // We have had issues, for example dotnet/msbuild/issues/9537, where the SDK resolver returned null as particular warnings or errors.
                     // Since this can be caused by custom and 3rd party SDK resolvers, we want to log this information to help diagnose the issue.

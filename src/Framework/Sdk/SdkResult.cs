@@ -28,6 +28,7 @@ namespace Microsoft.Build.Framework
         private protected IDictionary<string, SdkResultItem> _itemsToAdd;
         private protected IDictionary<string, string> _environmentVariablesToAdd;
         private protected SdkReference _sdkReference;
+        private protected bool _resolutionIsExpensive;
 
         /// <summary>
         ///     Indicates the resolution was successful.
@@ -76,5 +77,7 @@ namespace Microsoft.Build.Framework
         ///     The Sdk reference
         /// </summary>
         public virtual SdkReference SdkReference { get => _sdkReference; protected set => _sdkReference = value; }
+
+        public virtual bool ResolutionIsExpensive { get => _resolutionIsExpensive; protected set => _resolutionIsExpensive = value; }
     }
 }

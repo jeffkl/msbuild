@@ -1,6 +1,41 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <!-- https://learn.microsoft.com/dotnet/fundamentals/package-validation/diagnostic-ids -->
-<Suppressions xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+<Suppressions xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <Suppression>
+    <DiagnosticId>CP0005</DiagnosticId>
+    <Target>M:Microsoft.Build.Framework.SdkResultFactory.IndicateResolutionIsExpensive(Microsoft.Build.Framework.SdkReference,System.String)</Target>
+    <Left>lib/net10.0/Microsoft.Build.Framework.dll</Left>
+    <Right>lib/net10.0/Microsoft.Build.Framework.dll</Right>
+    <IsBaselineSuppression>true</IsBaselineSuppression>
+  </Suppression>
+  <Suppression>
+    <DiagnosticId>CP0005</DiagnosticId>
+    <Target>M:Microsoft.Build.Framework.SdkResultFactory.IndicateResolutionIsExpensive(Microsoft.Build.Framework.SdkReference,System.String)</Target>
+    <Left>lib/net472/Microsoft.Build.Framework.dll</Left>
+    <Right>lib/net472/Microsoft.Build.Framework.dll</Right>
+    <IsBaselineSuppression>true</IsBaselineSuppression>
+  </Suppression>
+  <Suppression>
+    <DiagnosticId>CP0005</DiagnosticId>
+    <Target>M:Microsoft.Build.Framework.SdkResultFactory.IndicateResolutionIsExpensive(Microsoft.Build.Framework.SdkReference,System.String)</Target>
+    <Left>ref/net10.0/Microsoft.Build.Framework.dll</Left>
+    <Right>ref/net10.0/Microsoft.Build.Framework.dll</Right>
+    <IsBaselineSuppression>true</IsBaselineSuppression>
+  </Suppression>
+  <Suppression>
+    <DiagnosticId>CP0005</DiagnosticId>
+    <Target>M:Microsoft.Build.Framework.SdkResultFactory.IndicateResolutionIsExpensive(Microsoft.Build.Framework.SdkReference,System.String)</Target>
+    <Left>ref/net472/Microsoft.Build.Framework.dll</Left>
+    <Right>ref/net472/Microsoft.Build.Framework.dll</Right>
+    <IsBaselineSuppression>true</IsBaselineSuppression>
+  </Suppression>
+  <Suppression>
+    <DiagnosticId>CP0005</DiagnosticId>
+    <Target>M:Microsoft.Build.Framework.SdkResultFactory.IndicateResolutionIsExpensive(Microsoft.Build.Framework.SdkReference,System.String)</Target>
+    <Left>ref/netstandard2.0/Microsoft.Build.Framework.dll</Left>
+    <Right>ref/netstandard2.0/Microsoft.Build.Framework.dll</Right>
+    <IsBaselineSuppression>true</IsBaselineSuppression>
+  </Suppression>
   <Suppression>
     <DiagnosticId>PKV004</DiagnosticId>
     <Target>.NETCoreApp,Version=v2.0</Target>

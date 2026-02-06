@@ -67,5 +67,10 @@ namespace Microsoft.Build.Evaluation
         /// Used in combination with <see cref="IgnoreMissingImports" /> to still treat an unresolved MSBuild project SDK as an error.
         /// </summary>
         FailOnUnresolvedSdk = 256,
+
+        /// <summary>
+        /// Used to indicate that if an SDK is resolved, but the process of resolving it is expensive, the load should fail instead of trying to resolve it.
+        /// </summary>
+        FailWhenSdkNeedsExpensiveResolution = 512,
     }
 }

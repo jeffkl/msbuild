@@ -70,5 +70,10 @@ namespace Microsoft.Build.BackEnd.SdkResolution
         {
             return new SdkResult(_sdkReference, paths, version, propertiesToAdd, itemsToAdd, warnings, environmentVariablesToAdd);
         }
+
+        public override SdkResultBase IndicateResolutionIsExpensive(SdkReference sdkReference, string version)
+        {
+            return new SdkResult(sdkReference: sdkReference, paths: null, version: version, propertiesToAdd: null, itemsToAdd: null, warnings: null, environmentVariablesToAdd: null, resolutionIsExpensive: true);
+        }
     }
 }
